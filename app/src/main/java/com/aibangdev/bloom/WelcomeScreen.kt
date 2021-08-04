@@ -22,24 +22,26 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.aibangdev.bloom.ui.theme.BloomTheme
 import com.aibangdev.bloom.ui.theme.Pink900
 import com.aibangdev.bloom.ui.theme.White
 
 @Composable
-fun WelcomeScreen() {
+fun WelcomeScreen(navController: NavController) {
     Surface(
         color = MaterialTheme.colors.primary,
         modifier = Modifier.fillMaxSize()
     ) {
         WelcomeBackground()
 
-        WelcomeScreenContent()
+        WelcomeScreenContent(navController)
     }
 }
 
 @Composable
-private fun WelcomeScreenContent() {
+private fun WelcomeScreenContent(navController: NavController) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -61,7 +63,7 @@ private fun WelcomeScreenContent() {
 
         Spacer(Modifier.height(8.dp))
 
-        LoginButton()
+        LoginButton(navController)
 
     }
 }
@@ -116,11 +118,13 @@ private fun CreateAccountButton() {
 }
 
 @Composable
-private fun LoginButton() {
+private fun LoginButton(navController: NavController) {
     val isLight = MaterialTheme.colors.isLight
     val textButtonColor = if (isLight) Pink900 else White
     TextButton(
-        onClick = { /*TODO*/ },
+        onClick = {
+                  navController.navigate("login")
+        },
         shape = MaterialTheme.shapes.medium,
         modifier = Modifier
             .fillMaxWidth()
@@ -155,7 +159,7 @@ private fun WelcomeBackground() {
 @Composable
 private fun PreviewDarkWelcomeScreen() {
     BloomTheme(darkTheme = true) {
-        WelcomeScreen()
+        WelcomeScreen(rememberNavController())
     }
 }
 
@@ -163,6 +167,6 @@ private fun PreviewDarkWelcomeScreen() {
 @Composable
 private fun PreviewLightWelcomeScreen() {
     BloomTheme(darkTheme = false) {
-        WelcomeScreen()
+        WelcomeScreen(rememberNavController())
     }
 }

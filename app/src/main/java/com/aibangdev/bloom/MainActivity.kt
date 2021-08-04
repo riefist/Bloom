@@ -8,6 +8,9 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.aibangdev.bloom.ui.theme.BloomTheme
 
 class MainActivity : ComponentActivity() {
@@ -15,16 +18,23 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             BloomTheme {
-                LoginScreen()
+                val navController = rememberNavController()
+                
+                NavHost(
+                    navController = navController,
+                    startDestination = "home"
+                ){
+                    composable("welcome"){
+                        WelcomeScreen(navController)
+                    }
+                    composable("login"){
+                        LoginScreen()
+                    }
+                    composable("home"){
+                        HomeScreen()
+                    }
+                }
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    BloomTheme {
-        LoginScreen()
     }
 }
