@@ -133,8 +133,10 @@ private fun LoginButton() {
     val textButtonColor = if (isLight) Pink900 else White
     TextButton(
         onClick = { /*TODO*/ },
+        shape = MaterialTheme.shapes.medium,
         modifier = Modifier
             .fillMaxWidth()
+            .height(48.dp)
             .padding(horizontal = 16.dp)
     ) {
         Text(
