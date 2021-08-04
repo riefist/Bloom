@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             BloomTheme {
-                WelcomeScreen()
+                LoginScreen()
             }
         }
     }
@@ -25,6 +25,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     BloomTheme {
-        WelcomeScreen()
+        LoginScreen()
     }
 }
