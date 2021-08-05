@@ -12,3 +12,12 @@ val defaultPlantThemes = listOf(
     PlantTheme(R.drawable.easy_care, "Easy Care"),
     PlantTheme(R.drawable.statements, "Statements")
 )
+
+val homeGardenThemes = listOf(
+    PlantTheme(R.drawable.monstera, "Monstera"),
+    PlantTheme(R.drawable.aglaonema, "Aglaonema"),
+    PlantTheme(R.drawable.peace_lily, "Peace Lily"),
+    PlantTheme(R.drawable.fiddle_leaf, "Fiddle Leaf"),
+    PlantTheme(R.drawable.snake_plant, "Snake Plant"),
+    PlantTheme(R.drawable.pothos, "Pothos")
+)
