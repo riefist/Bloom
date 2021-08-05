@@ -22,13 +22,13 @@ class MainActivity : ComponentActivity() {
                 
                 NavHost(
                     navController = navController,
-                    startDestination = "home"
+                    startDestination = "welcome"
                 ){
                     composable("welcome"){
                         WelcomeScreen(navController)
                     }
                     composable("login"){
-                        LoginScreen()
+                        LoginScreen(navController)
                     }
                     composable("home"){
                         HomeScreen()

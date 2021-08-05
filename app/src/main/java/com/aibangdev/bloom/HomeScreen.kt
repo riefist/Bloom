@@ -3,6 +3,7 @@ package com.aibangdev.bloom
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
@@ -44,7 +45,7 @@ fun HomeScreen() {
             BloomBottomBar()
         }
     ) {
-        HomeScreenContent()
+        HomeScreenContent(it)
     }
 
 }
@@ -99,7 +100,7 @@ private fun RowScope.BloomBottomButton(
 }
 
 @Composable
-private fun HomeScreenContent() {
+private fun HomeScreenContent(paddingValues: PaddingValues) {
     Surface(
         color = MaterialTheme.colors.background,
         modifier = Modifier
@@ -109,6 +110,7 @@ private fun HomeScreenContent() {
             modifier = Modifier
                 .fillMaxWidth()
                 .verticalScroll(rememberScrollState())
+                .padding(paddingValues)
         ) {
 
             Spacer(Modifier.height(40.dp))
@@ -153,6 +155,7 @@ private fun HomeGardenSection() {
         verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier
             .padding(horizontal = 16.dp)
+            .padding(bottom = 16.dp)
     ) {
         homeGardenThemes.forEach { theme ->
             HomeGardenListItem(plantTheme = theme)
