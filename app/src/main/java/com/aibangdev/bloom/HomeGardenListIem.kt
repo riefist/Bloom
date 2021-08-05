@@ -123,7 +123,7 @@ fun PreviewDarkItem() {
         Surface(
             color = MaterialTheme.colors.background
         ) {
-            HomeGardenListItem(plantTheme = homeGardenThemes.first())
+            HomeGardenListItem(plantTheme = homeGardenItems.first())
         }
     }
 
@@ -139,7 +139,7 @@ fun PreviewLightItem() {
             color = MaterialTheme.colors.background
         ) {
 
-            HomeGardenListItem(plantTheme = homeGardenThemes.first())
+            HomeGardenListItem(plantTheme = homeGardenItems.first())
         }
     }
 }

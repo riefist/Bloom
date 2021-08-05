@@ -157,7 +157,7 @@ private fun HomeGardenSection() {
             .padding(horizontal = 16.dp)
             .padding(bottom = 16.dp)
     ) {
-        homeGardenThemes.forEach { theme ->
+        homeGardenItems.forEach { theme ->
             HomeGardenListItem(plantTheme = theme)
         }
     }
