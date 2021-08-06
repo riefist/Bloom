@@ -2,6 +2,7 @@ package com.aibangdev.bloom
 
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -13,10 +14,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
@@ -48,13 +51,32 @@ fun HomeScreen(homeViewModel: HomeViewModel) {
 }
 
 @Composable
+private fun HomeScreenLoader(paddingValues: PaddingValues) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(paddingValues)
+    ) {
+        CircularProgressIndicator(
+            modifier = Modifier
+                .wrapContentSize()
+                .align(Alignment.Center)
+        )
+    }
+}
+
+@Composable
 private fun HomeScreenScaffold(state: HomeViewState) {
     Scaffold(
         bottomBar = {
             BloomBottomBar()
         }
     ) {
-        HomeScreenContent(it, state)
+        if (state.showLoading){
+            HomeScreenLoader(paddingValues = it)
+        } else {
+            HomeScreenContent(it, state)
+        }
     }
 
 }
