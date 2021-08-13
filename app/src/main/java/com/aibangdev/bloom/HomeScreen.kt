@@ -41,10 +41,27 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.aibangdev.bloom.ui.theme.BloomTheme
+import androidx.lifecycle.viewmodel.compose.viewModel
+
 
 @Composable
-fun HomeScreen(homeViewModel: HomeViewModel) {
+fun HomeScreen(
+    homeViewModel: HomeViewModel = viewModel(
+        key = null,
+        factory = object : ViewModelProvider.Factory {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                val repository = InMemoryPlantService()
+                return HomeViewModel(
+                    repository = repository
+                ) as T
+            }
+        }
+    )
+) {
+
     val currentState: State<HomeViewState> = homeViewModel.viewState.collectAsState()
 
     HomeScreenScaffold(state = currentState.value)
@@ -72,7 +89,7 @@ private fun HomeScreenScaffold(state: HomeViewState) {
             BloomBottomBar()
         }
     ) {
-        if (state.showLoading){
+        if (state.showLoading) {
             HomeScreenLoader(paddingValues = it)
         } else {
             HomeScreenContent(it, state)

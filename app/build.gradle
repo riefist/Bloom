@@ -67,4 +67,5 @@ dependencies {
     // Material design icons
     implementation 'androidx.compose.material:material-icons-core:1.0.0-rc02'
     implementation 'androidx.compose.material:material-icons-extended:1.0.0-rc02'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07'
 }

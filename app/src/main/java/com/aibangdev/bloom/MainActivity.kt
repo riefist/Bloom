@@ -13,17 +13,6 @@ import com.aibangdev.bloom.ui.theme.BloomTheme
 
 class MainActivity : ComponentActivity() {
 
-    private val homeViewModel: HomeViewModel by viewModels {
-        object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                val repository = InMemoryPlantService()
-                return HomeViewModel(
-                    repository = repository
-                ) as T
-            }
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -41,7 +30,7 @@ class MainActivity : ComponentActivity() {
                         LoginScreen(navController)
                     }
                     composable("home"){
-                        HomeScreen(homeViewModel = homeViewModel)
+                        HomeScreen()
                     }
                 }
             }
